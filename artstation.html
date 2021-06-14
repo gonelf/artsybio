@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    // let link = "https://www.artstation.com/users/wolvehn/projects.json?album_id=all&page=1";
+    let link = "artstation.com/users/wolvehn/projects.json?album_id=all";
+    // let link = "https://www.artstation.com/users/wolvehn/following.json";
+    // let link = "artstation.com/users/wolvehn/following.json";
+    // let link = "https://www.artstation.com/wolvehn/albums/all";
+    // let link = "artstation.com/wolvehn/albums/all"
+
+    $.ajaxSetup({
+        scriptCharset: "utf-8", //or "ISO-8859-1"
+        contentType: "application/json; charset=utf-8"
+    });
+
+    console.log('https://script.google.com/macros/s/AKfycbwHUbAAtF_tFFrdBiZon6gKknEDYyxMosA0NpjSLPZyIBy8jqSAZLAOGeCAHgiHA2er/exec?url=' +
+        encodeURIComponent(link) + '&callback=?');
+
+    $.getJSON('https://script.google.com/macros/s/AKfycbwHUbAAtF_tFFrdBiZon6gKknEDYyxMosA0NpjSLPZyIBy8jqSAZLAOGeCAHgiHA2er/exec?url=' +
+        encodeURIComponent(link) + '&callback=?',
+        function (data) {
+            console.log("> ", JSON.parse(data.result));
+
+            //If the expected response is text/plain
+            // $("#viewer").html(data.contents);
+
+            //If the expected response is JSON
+            //var response = $.parseJSON(data.contents);
+    });
+  </script>
+</html>
