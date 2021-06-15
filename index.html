@@ -1,151 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" >
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-    <title>{{title}}</title>
-
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./styles.css">
+    <!-- <link rel="stylesheet" href="./styles.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="container">
-      <div class="row">
-      <div class="col-lg-6 col-12">
-        <div class="_profile">
+      <div style="text-align: center;">
 
-          <div class="text-center box shadow" style="">
-            <img class="backdrop profilepic">
-            <h2 id="title" style="padding-top: 20px;"></h2>
-            <p id="description" class="p-2"></p>
-            <p id="social"></p>
-          </div>
-          <div class="text-center">
-
-          </div>
-          <div id="buttons" class="text-center box shadow">
-              
-          </div>
-          <div id="ko-fi">
-
-          </div>
-          <div class="text-center d-none d-lg-block p-4">
-            Powered by @gonelf. Get yours.<br>
-            <a href="https://twitter.com/intent/tweet?screen_name=gonelf&ref_src=twsrc%5Etfw" style="color: #34312f;" class="twitter-mention-button" data-text="Hi! Make me an artsy bio too." data-show-count="false"></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
-        </div>
-      </div>
-    <!-- </div>
-
-
-    <div class="container"> -->
-    <div class="col-lg-6 col-12 ">
-      <div id="artstation" class="box shadow pb-4" style="width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <img src="./logos/ArtStation-logo-horizontal-white.svg" style="width: 30%;" alt="">
-
-      </div>
-      <div id="instagram" class="box shadow" style="margin-bottom: 30px; padding-top: 10px; text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <img src="./logos/Instagram-Logo.png" style="width:30%;" alt="">
-
+        <h1>Turn your art into money $$$</h1>
+        <form class="" action="artist.html" method="get">
+          Instagram name: <input type="text" name="ig" value=""><br>
+          Ko-fi name: <input type="text" name="kofi" value=""><br>
+          ArtStation name: <input type="text" name="artstation" value=""><br>
+          <input type="submit" class="btn btn-secondary" name="" value="Create page">
+        </form>
+        <h2>Check some of the Artists</h2>
+        <a href="./artist.html?ig=wolvehnart&kofi=wolvehnart&artstation=wolvehn" class="btn btn-primary" type="button" name="button">WolvenArt</a>
+        <a href="./artist.html?ig=productisserved&kofi=productisserved&artstation=" class="btn btn-primary" type="button" name="button">Product is Served</a>
       </div>
     </div>
-      <!-- <div class="col-xs-12">
-        <div class="text-center">
-            <div style="padding-bottom: 30px;">
-                <button onclick="location.href='http://bit.ly/2IZURI7'" type="button" class="btn btn-outline-light shake" style="width: 80%; padding-top:10px; padding-bottom:10px; font-weight: 800;">15% OFF Instagram Growth</button>
-            </div>
-            <div style="padding-bottom: 30px;">
-                <button onclick="location.href='http://bit.ly/2SVZXES'" type="button" class="btn btn-outline-light" style="width: 80%; padding-top:10px; padding-bottom:10px; font-weight: 600;">Guide: Increasing Your Engagement</button>
-            </div>
-            <div style="padding-bottom: 30px;">
-                <button onclick="location.href='#'" type="button" class="btn btn-outline-light" style="width: 80%; padding-top:10px; padding-bottom:10px; font-weight: 600;">View My YouTube Channel</button>
-            </div>
-            <div style="padding-bottom: 30px;">
-                <button onclick="location.href='#'" type="button" class="btn btn-outline-light" style="width: 80%; padding-top:10px; padding-bottom:10px; font-weight: 600;">Connect On LinkedIn</button>
-            </div>
-            <div style="padding-bottom: 30px;">
-                <button onclick="location.href='#'" type="button" class="btn btn-outline-light" style="width: 80%; padding-top:10px; padding-bottom:10px; font-weight: 600;">My Personal Website</button>
-            </div>
-        </div>
-      </div> -->
-    </div>
-
-    </div>
-    <div class="container d-block d-lg-none">
-      <div class="text-center p-4">
-        Powered by @gonelf. Get yours.<br>
-        <a href="https://twitter.com/intent/tweet?screen_name=gonelf&ref_src=twsrc%5Etfw" style="color: #34312f;" class="twitter-mention-button" data-text="Hi! Make me an artsy bio too." data-show-count="false"></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      </div>
-    </div>
-
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="./items.js"></script>
-    <!-- instagram feed -->
-    <script src="./InstagramFeed.js"></script>
-    <script src="./instafeed.js"></script>
-
-    <script type="text/javascript">
-    window.addEventListener('scroll',sticky,false);
-		window.addEventListener('wheel',sticky,false);
-
-    function sticky() {
-       if($("._profile").height() - $(window).scrollTop() < $(window).height() && $(window).width() > 991) {
-           let width = $("._profile").width();
-           $("._profile").css("top", "");
-           $("._profile").css("position", "fixed");
-           $("._profile").css("bottom", "0px");
-           $("._profile").css("width", width+"px");
-       }
-       else {
-         $("._profile").css("bottom", "");
-         $("._profile").css("position", "relative");
-         $("._profile").css("top", "0px");
-       }
-      }
-
-      // instagram feed
-      let instagramID = "wolvehnart";
-      let IGcontainer = "#instagram";
-      loadIGFeed(instagramID);
-
-      // ko-fi widget
-      let kofiID = "wolvehnart";
-      $("#ko-fi").html("<iframe src='https://ko-fi.com/"+kofiID+"/?hidefeed=true&widget=true&embed=true&preview=true' class='box shadow pt-4' style='border:none;width:100%;padding:4px;background:#f9f9f9;' height='712' title='productisserved'></iframe>");
-
-      // artstation feed
-      function loadArtstationFeed(id, containerID){
-        let link = "artstation.com/users/"+id+"/projects.json?album_id=all";
-        // console.log("art");
-        proxy(link, function(data){
-          // console.log(data.result);
-          let resp = JSON.parse(data.result);
-          // console.log(resp);
-          $.each(resp.data.slice(0, 10), function(key, item){
-            // let [first] = Object.keys(item);
-            // console.log(Object.keys(item));
-            // console.log(item);
-            let card = '<div class="card p-4 mt-4" style="width: 95%;">'+
-              '<img class="card-img-top" src="'+item.cover.thumb_url+'" alt="Card image cap">'+
-              '<div class="card-body">'+
-                '<h5 class="card-title">'+item.title+'</h5>'+
-                '<p class="card-text">'+item.description+'</p>'+
-                '<a href="'+item.permalink+'" class="btn btn-outline-dark">View on Artstation</a>'+
-              '</div>'+
-            '</div>';
-            $("#artstation").append(card);
-          });
-        })
-      }
-      let artstationID = "wolvehn";
-      loadArtstationFeed(artstationID);
-    </script>
-</body>
-
+  </body>
 </html>

@@ -138,5 +138,5 @@ function loadItems(items) {
 }
 
 $(document).ready(function() {
-  loadItems(items);
+  // loadItems(items);
 });
