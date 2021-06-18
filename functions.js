@@ -2,17 +2,25 @@ window.addEventListener('scroll',sticky,false);
 window.addEventListener('wheel',sticky,false);
 
 function sticky() {
-  if($("._profile").height() - $(window).scrollTop() < $(window).height() && $(window).width() > 991) {
-     let width = $("._profile").width();
-     $("._profile").css("top", "");
-     $("._profile").css("position", "fixed");
-     $("._profile").css("bottom", "0px");
-     $("._profile").css("width", width+"px");
+  if($("._profile").height() > $(window).height()){
+    if($("._profile").height() - $(window).scrollTop() < $(window).height() && $(window).width() > 991) {
+      let width = $("._profile").width();
+      $("._profile").css("top", "");
+      $("._profile").css("position", "fixed");
+      $("._profile").css("bottom", "0px");
+      $("._profile").css("width", width+"px");
+    }
+    else {
+      $("._profile").css("bottom", "");
+      $("._profile").css("position", "relative");
+      $("._profile").css("top", "0px");
+    }
   }
   else {
-   $("._profile").css("bottom", "");
-   $("._profile").css("position", "relative");
-   $("._profile").css("top", "0px");
+    let width = $("._profile").width();
+    $("._profile").css("position", "fixed");
+    $("._profile").css("top", "0px");
+    $("._profile").css("width", width+"px");
   }
 }
 
