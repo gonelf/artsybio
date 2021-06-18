@@ -17,10 +17,13 @@ function sticky() {
     }
   }
   else {
-    let width = $("._profile").width();
-    $("._profile").css("position", "fixed");
-    $("._profile").css("top", "0px");
-    $("._profile").css("width", width+"px");
+    if ($(window).width() > 991){
+
+      let width = $("._profile").width();
+      $("._profile").css("position", "fixed");
+      $("._profile").css("top", "0px");
+      $("._profile").css("width", width+"px");
+    }
   }
 }
 
@@ -78,13 +81,15 @@ function addScript(scr){
   document.getElementsByTagName('body')[0].appendChild(script);
 }
 
-function getSocialId(link){
-  console.log(link);
+function getSocialId(link, social_network){
   var parts = link.split("/");
-  if (parts[parts.length-1] != "") {
-    return parts[parts.length-1];
-  }
-  return parts[parts.length-2];
+  var id = "";
+  $.each(parts, function(key, part){
+    if (part.includes(social_network)) {
+      id = parts[key+1];
+    }
+  });
+  return id;
 }
 
 function populateUserInfo(userinfo){
@@ -146,12 +151,13 @@ function loadIGFeed(IGName){
 
 // artstation feed
 function loadArtstationFeed(id, containerID){
+  console.log(id);
   if (id == "" || id == "undefined"){
     $(containerID).hide();
   }
 
-  let link = "artstation.com/users/"+id+"/projects.json?album_id=all";
-  // console.log("art");
+  let link = "artstation.com/users/"+id+"/projects.json?album_id=all&page=1";
+  console.log(link);
   proxy(link, function(data){
     // console.log(data.result);
     let resp = JSON.parse(data.result);

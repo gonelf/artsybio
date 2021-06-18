@@ -102,13 +102,14 @@
         let links = [];
         $.each(data, function(key, item){
           if (item.link.includes("instagram")) {
-            loadIGFeed(getSocialId(item.link));
+            loadIGFeed(getSocialId(item.link, "instagram"));
           }
           else if (item.link.includes("ko-fi")) {
-            loadKofiWidget(getSocialId(item.link));
+            loadKofiWidget(getSocialId(item.link, "ko-fi"));
           }
           else if (item.link.includes("artstation")) {
-            loadArtstationFeed(getSocialId(item.link), "#artstation");
+            console.log(getSocialId(item.link, "artstation"));
+            loadArtstationFeed(getSocialId(item.link, "artstation"));
           }
           else {
             links.push(item);
