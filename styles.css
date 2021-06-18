@@ -122,9 +122,9 @@ h6 {
 	  /* -moz-box-shadow: 0px 6px 5px #111;
 	  -webkit-box-shadow: 0px 6px 5px #111;
 	  box-shadow: 0px 2px 10px #111; */
-	  -moz-border-radius:190px;
-	  -webkit-border-radius:190px;
-	  border-radius:190px;
+	  -moz-border-radius:50%;
+	  -webkit-border-radius:50%;
+	  border-radius:50%;
   }
 
 	.shadow {

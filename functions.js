@@ -85,7 +85,7 @@ function populateUserInfo(userinfo){
     switch (key) {
       case 0:
           var avatar = $(child).children().first().attr("src");
-          $(".profilepic").css("background-image", "url("+avatar+")");
+          $(".profilepic").attr("src", avatar);
         break;
       case 1:
         $("#title").text($(child).text());
