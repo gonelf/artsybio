@@ -87,9 +87,8 @@ function getLinktreeLinks(id, callback){
       // console.log($(child).text());
       switch (key) {
         case 0:
-            // imageProxy($(child).attr("href"), ".profilepic");
-            console.log($(child));
-            $(".profilepic").css("background-image", "url("+$(child).attr("href")+")");
+            var avatar = $(child).children().first().attr("src");
+            $(".profilepic").css("background-image", "url("+avatar+")");
           break;
         case 1:
           $("#title").text($(child).text());
