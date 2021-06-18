@@ -79,28 +79,32 @@ function getSocialId(link){
   return parts[parts.length-2];
 }
 
+function populateUserInfo(userinfo){
+  $.each($(userinfo).parent().parent().children(), function(key, child){
+    // console.log($(child).text());
+    switch (key) {
+      case 0:
+          var avatar = $(child).children().first().attr("src");
+          $(".profilepic").css("background-image", "url("+avatar+")");
+        break;
+      case 1:
+        $("#title").text($(child).text());
+        $("title").text("ArtsyBio - "+$(child).text());
+        break;
+      case 2:
+        $("#description").text($(child).text());
+        break;
+    }
+  });
+}
+
 // parse linktree
 function getLinktreeLinks(id, callback){
   proxy("https://linktr.ee/"+id, function(data){
     // console.log(data.result);
     // parse user info
     var userinfo = $(data.result).find("[data-testid=ProfileImage]")
-    // console.log($(userinfo).parent().parent());
-    $.each($(userinfo).parent().parent().children(), function(key, child){
-      // console.log($(child).text());
-      switch (key) {
-        case 0:
-            var avatar = $(child).children().first().attr("src");
-            $(".profilepic").css("background-image", "url("+avatar+")");
-          break;
-        case 1:
-          $("#title").text($(child).text());
-          break;
-        case 2:
-          $("#description").text($(child).text());
-          break;
-      }
-    });
+    populateUserInfo(userinfo);
     // parse links
     var results = [];
     $(data.result).find('a').each(function(key, value) {
