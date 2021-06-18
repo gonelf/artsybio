@@ -147,7 +147,7 @@ function loadIGFeed(IGName){
 // artstation feed
 function loadArtstationFeed(id, containerID){
   if (id == "" || id == "undefined"){
-    $(container).hide();
+    $(containerID).hide();
   }
 
   let link = "artstation.com/users/"+id+"/projects.json?album_id=all";
