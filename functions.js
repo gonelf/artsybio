@@ -43,14 +43,6 @@ function imageProxy(url, imgContainer){
 }
 
 function populate(data) {
-  // console.log(data);
-  // let name = data.username;
-  // let bio = data.biography;
-  // let avatar = data.profile_pic_url;
-  // $("#title").text(name);
-  // $("#description").text(bio);
-  // imageProxy(avatar, ".profilepic");
-
   posts = data.edge_owner_to_timeline_media.edges;
   $.each(posts, function(key, value){
     id = value.node.shortcode;
@@ -61,6 +53,16 @@ function populate(data) {
 
 }
 
+function loadButtons(buttons){
+  var res = "";
+  $.each(buttons, function(key, button){
+    res += '<div style="padding-bottom: 30px;">'+
+        '<a href="'+button.link+'" type="button" target="_blank" class="btn btn-outline-dark" style="width: 80%; padding-top:10px; padding-bottom:10px; font-weight: 600;">'+button.text+'</a>'+
+    '</div>';
+  })
+  return res;
+}
+
 function addScript(scr){
   var script = document.createElement('script');
   script.setAttribute('src', scr);
@@ -69,6 +71,7 @@ function addScript(scr){
 }
 
 function getSocialId(link){
+  console.log(link);
   var parts = link.split("/");
   if (parts[parts.length-1] != "") {
     return parts[parts.length-1];

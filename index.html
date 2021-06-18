@@ -12,17 +12,25 @@
     <div class="container">
       <div style="text-align: center;">
 
-        <h1>Turn your art into money $$$</h1>
-        <form class="" action="artist.html" method="get">
-          Instagram name: <input type="text" name="ig" value=""><br>
-          Ko-fi name: <input type="text" name="kofi" value=""><br>
-          ArtStation name: <input type="text" name="artstation" value=""><br>
-          <input type="submit" class="btn btn-secondary" name="" value="Create page">
+        <h1>Turn your linktree into a breautiful art galery</h1>
+        <form id="form" class="" action="artist.html" method="get">
+          Linktree: <input type="text" id="linktree" value=""><br>
+          <input type="submit" class="btn btn-secondary" name="" value="Open Art Galery">
         </form>
         <h2>Check some of the Artists</h2>
-        <a href="./artist.html?ig=wolvehnart&kofi=wolvehnart&artstation=wolvehn" class="btn btn-primary" type="button" name="button">WolvenArt</a>
-        <a href="./artist.html?ig=productisserved&kofi=productisserved&artstation=" class="btn btn-primary" type="button" name="button">Product is Served</a>
+        <a href="./artist.html?id=wolvehnart" class="btn btn-primary" type="button" name="button">WolvenArt</a>
+        <a href="./artist.html?id=productisserved" class="btn btn-primary" type="button" name="button">Product is Served</a>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./functions.js"></script>
+    <script type="text/javascript">
+      $("#form").submit(function(event){
+        event.preventDefault();
+        var link = $("#linktree").val();
+        window.location.href="/artist.html?id="+getSocialId(link);
+        // return false;
+      });
+    </script>
   </body>
 </html>

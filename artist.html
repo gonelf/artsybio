@@ -27,7 +27,7 @@
           <div class="text-center">
 
           </div>
-          <div id="buttons" class="text-center box shadow" style="display: none;">
+          <div id="buttons" class="text-center box shadow">
 
           </div>
           <div id="ko-fi">
@@ -97,7 +97,7 @@
       const urlParams = new URLSearchParams(queryString);
 
       let id = urlParams.get('id');
-      getLinktreeLinks("Wolvehnart", function(data){
+      getLinktreeLinks(id, function(data){
         // console.log(data);
         let links = [];
         $.each(data, function(key, item){
@@ -114,6 +114,11 @@
             links.push(item);
           }
         })
+        var bts = loadButtons(links);
+        if (bts == ""){
+            $("#buttons").hide();
+        }
+        $("#buttons").html(bts);
       });
 
     </script>
