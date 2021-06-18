@@ -89,73 +89,33 @@
     <script src="./items.js"></script>
     <!-- instagram feed -->
     <script src="./InstagramFeed.js"></script>
-    <script src="./instafeed.js"></script>
+    <script src="./functions.js"></script>
 
     <script type="text/javascript">
-    window.addEventListener('scroll',sticky,false);
-		window.addEventListener('wheel',sticky,false);
-
-    function sticky() {
-       if($("._profile").height() - $(window).scrollTop() < $(window).height() && $(window).width() > 991) {
-           let width = $("._profile").width();
-           $("._profile").css("top", "");
-           $("._profile").css("position", "fixed");
-           $("._profile").css("bottom", "0px");
-           $("._profile").css("width", width+"px");
-       }
-       else {
-         $("._profile").css("bottom", "");
-         $("._profile").css("position", "relative");
-         $("._profile").css("top", "0px");
-       }
-      }
-
       // get vars
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
 
-
-      // instagram feed
-      let instagramID = urlParams.get('ig');
-      let IGcontainer = "#instagram";
-      loadIGFeed(instagramID);
-
-      // ko-fi widget
-      let kofiID = urlParams.get('kofi');
-      if (kofiID == "" || kofiID == "undefined"){
-        $("#ko-fi").hide();
-      }
-      $("#ko-fi").html("<iframe src='https://ko-fi.com/"+kofiID+"/?hidefeed=true&widget=true&embed=true&preview=true' class='box shadow pt-4' style='border:none;width:100%;padding:4px;background:#f9f9f9;' height='712' title='productisserved'></iframe>");
-
-      // artstation feed
-      function loadArtstationFeed(id, containerID){
-        let link = "artstation.com/users/"+id+"/projects.json?album_id=all";
-        // console.log("art");
-        proxy(link, function(data){
-          // console.log(data.result);
-          let resp = JSON.parse(data.result);
-          // console.log(resp);
-          $.each(resp.data.slice(0, 10), function(key, item){
-            // let [first] = Object.keys(item);
-            // console.log(Object.keys(item));
-            // console.log(item);
-            let card = '<div class="card p-4 mt-4" style="width: 95%;">'+
-              '<img class="card-img-top" src="'+item.cover.thumb_url+'" alt="Card image cap">'+
-              '<div class="card-body">'+
-                '<h5 class="card-title">'+item.title+'</h5>'+
-                '<p class="card-text">'+item.description+'</p>'+
-                '<a href="'+item.permalink+'" class="btn btn-outline-dark">View on Artstation</a>'+
-              '</div>'+
-            '</div>';
-            $("#artstation").append(card);
-          });
+      let id = urlParams.get('id');
+      getLinktreeLinks("Wolvehnart", function(data){
+        // console.log(data);
+        let links = [];
+        $.each(data, function(key, item){
+          if (item.link.includes("instagram")) {
+            loadIGFeed(getSocialId(item.link));
+          }
+          else if (item.link.includes("ko-fi")) {
+            loadKofiWidget(getSocialId(item.link));
+          }
+          else if (item.link.includes("artstation")) {
+            loadArtstationFeed(getSocialId(item.link), "#artstation");
+          }
+          else {
+            links.push(item);
+          }
         })
-      }
-      let artstationID = urlParams.get('artstation');
-      if (artstationID == "" || artstationID == "undefined"){
-        $("#artstation").hide();
-      }
-      loadArtstationFeed(artstationID);
+      });
+
     </script>
 </body>
 

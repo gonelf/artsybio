@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script src="./functions.js"></script>
+  <script type="text/javascript">
+    function getLinktreeLinks(id, callback){
+      proxy("https://linktr.ee/"+id, function(data){
+        // console.log(data.result);
+        // get user info
+        var userinfo = $(data.result).find("[data-testid=ProfileImage]")
+        console.log($(userinfo).parent().parent());
+        $.each($(userinfo).parent().parent().children(), function(key, child){
+          console.log($(child).text());
+        });
+        // get links
+        var results = [];
+        $(data.result).find('a').each(function(key, value) {
+          if ($(value).attr("data-testid") == "LinkButton") {
+            // console.log($(value).attr("href"));
+            // console.log($(value).text());
+            results.push({text: $(value).text(), link: $(value).attr("href")});
+          }
+        });
+        callback(results);
+      });
+    }
+    getLinktreeLinks("Wolvehnart", function(data){
+      console.log(data);
+    });
+  </script>
+</html>
