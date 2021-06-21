@@ -97,18 +97,23 @@
       const urlParams = new URLSearchParams(queryString);
 
       let id = urlParams.get('id');
+      var ig = false;
+      var kofi = false;
+      var art = false;
       getLinktreeLinks(id, function(data){
         // console.log(data);
         let links = [];
         $.each(data, function(key, item){
-          if (item.link.includes("instagram")) {
+          if (item.link.includes("instagram") && !ig) {
+            ig = true;
             loadIGFeed(getSocialId(item.link, "instagram"));
           }
-          else if (item.link.includes("ko-fi")) {
+          else if (item.link.includes("ko-fi") && !kofi) {
+            kofi = true;
             loadKofiWidget(getSocialId(item.link, "ko-fi"));
           }
-          else if (item.link.includes("artstation")) {
-            console.log(getSocialId(item.link, "artstation"));
+          else if (item.link.includes("artstation") && !art) {
+            art = true;
             loadArtstationFeed(getSocialId(item.link, "artstation"));
           }
           else {
