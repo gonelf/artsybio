@@ -27,6 +27,9 @@
           <div class="text-center">
 
           </div>
+          <div id="YT" class="box shadow p-2" style="display: none; width: 100%;">
+
+          </div>
           <div id="buttons" class="text-center box shadow">
 
           </div>
@@ -44,11 +47,11 @@
 
     <div class="container"> -->
     <div class="col-lg-6 col-12 ">
-      <div id="artstation" class="box shadow pb-4" style="width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center;">
+      <div id="artstation" class="box shadow" style="display: none !important; width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center;">
         <img src="./logos/ArtStation-logo-horizontal-white.svg" style="width: 30%;" alt="">
 
       </div>
-      <div id="instagram" class="box shadow" style="margin-bottom: 30px; padding-top: 10px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+      <div id="instagram" class="box shadow" style="display: none; margin-bottom: 30px; padding-top: 10px; text-align: center; display: flex; flex-direction: column; align-items: center;">
         <img src="./logos/Instagram-Logo.png" style="width:30%;" alt="">
 
       </div>
@@ -100,21 +103,27 @@
       var ig = false;
       var kofi = false;
       var art = false;
+      var yt = false;
       getLinktreeLinks(id, function(data){
         // console.log(data);
         let links = [];
         $.each(data, function(key, item){
-          if (item.link.includes("instagram") && !ig) {
+          if (item.url.includes("instagram") && !ig) {
             ig = true;
-            loadIGFeed(getSocialId(item.link, "instagram"));
+            loadIGFeed(getSocialId(item.url, "instagram"));
           }
-          else if (item.link.includes("ko-fi") && !kofi) {
+          else if (item.url.includes("ko-fi") && !kofi) {
             kofi = true;
-            loadKofiWidget(getSocialId(item.link, "ko-fi"));
+            loadKofiWidget(getSocialId(item.url, "ko-fi"));
           }
-          else if (item.link.includes("artstation") && !art) {
+          else if (item.url.includes("artstation") && !art) {
             art = true;
-            loadArtstationFeed(getSocialId(item.link, "artstation"));
+            loadArtstationFeed(getSocialId(item.url, "artstation"), "#artstation");
+          }
+          else if (item.url.includes("youtube") && !yt){
+            yt = true;
+            // console.log(item.context.channelId);
+            loadYT(item.context.channelId);
           }
           else {
             links.push(item);

@@ -54,6 +54,7 @@ function imageProxy(url, imgContainer){
 }
 
 function populate(data) {
+  $("#instagram").show();
   posts = data.edge_owner_to_timeline_media.edges;
   $.each(posts, function(key, value){
     id = value.node.shortcode;
@@ -61,14 +62,23 @@ function populate(data) {
     $("#instagram").append(post(id));
   });
   addScript('//www.instagram.com/embed.js');
+}
 
+function loadYT(channelId){
+  $("#YT").show();
+  let key = "AIzaSyBBhfd45uV5LVDcfWqw8ULLSkkJZ-yEwY0";
+  $.get("https://www.googleapis.com/youtube/v3/search?key="+key+"&channelId="+channelId+"&part=snippet,id&order=date&maxResults=1", function(data){
+    // console.log(data);
+    var id = data.items[0].id.videoId;
+    $("#YT").html('<iframe id="'+id+'" style="height: 300px;" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="100%" height="100%" src="https://www.youtube.com/embed/'+id+'?origin=https%3A%2F%2Fartsybio.com&amp;autoplay=0&amp;mute=0&amp;playsinline=1&amp;modestbranding=1&amp;listType=user_uploads&amp;enablejsapi=1&amp;widgetid=1"></iframe>')
+  });
 }
 
 function loadButtons(buttons){
   var res = "";
   $.each(buttons, function(key, button){
     res += '<div style="padding-bottom: 30px;">'+
-        '<a href="'+button.link+'" type="button" target="_blank" class="btn btn-outline-dark" style="width: 80%; padding-top:10px; padding-bottom:10px; font-weight: 600;">'+button.text+'</a>'+
+        '<a href="'+button.url+'" type="button" target="_blank" class="btn btn-outline-dark" style="width: 80%; padding-top:10px; padding-bottom:10px; font-weight: 600;">'+button.title+'</a>'+
     '</div>';
   })
   return res;
@@ -120,11 +130,23 @@ function getLinktreeLinks(id, callback){
     populateUserInfo(userinfo);
     // parse links
     var results = [];
-    $(data.result).find('a').each(function(key, value) {
-      if ($(value).attr("data-testid") == "LinkButton") {
-        // console.log($(value).attr("href"));
-        // console.log($(value).text());
-        results.push({text: $(value).text(), link: $(value).attr("href")});
+    // $(data.result).find('a').each(function(key, value) {
+    //   if ($(value).attr("data-testid") == "LinkButton") {
+    //     // console.log(value);
+    //     // console.log($(value).attr("href"));
+    //     // console.log($(value).text());
+    //     results.push({text: $(value).text(), link: $(value).attr("href")});
+    //   }
+    // });
+
+    $(data.result).find('script').prevObject.each(function(key, value) {
+      // console.log("link");
+      // console.log(value.id);
+      if (value.id == "__NEXT_DATA__") {
+        var script = JSON.parse($(value).html());
+        var account = script.props.pageProps.account;
+        // console.log(account.links);
+        results = account.links;
       }
     });
     callback(results);
@@ -151,13 +173,14 @@ function loadIGFeed(IGName){
 
 // artstation feed
 function loadArtstationFeed(id, containerID){
-  console.log(id);
+  // console.log("ArtStation: "+id);
   if (id == "" || id == "undefined"){
     $(containerID).hide();
   }
+  // $(containerID).show();
 
   let link = "artstation.com/users/"+id+"/projects.json?album_id=all&page=1";
-  console.log(link);
+  // console.log(link);
   proxy(link, function(data){
     // console.log(data.result);
     let resp = JSON.parse(data.result);
@@ -183,5 +206,6 @@ function loadKofiWidget(kofiID) {
   if (kofiID == "" || kofiID == "undefined"){
     $("#ko-fi").hide();
   }
+  $("#ko-fi").show();
   $("#ko-fi").html("<iframe src='https://ko-fi.com/"+kofiID+"/?hidefeed=true&widget=true&embed=true&preview=true' class='box shadow pt-4' style='border:none;width:100%;padding:4px;background:#f9f9f9;' height='712' title='productisserved'></iframe>");
 }
