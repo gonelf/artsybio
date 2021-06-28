@@ -11,7 +11,7 @@ body {
 
 a:link {
   color: black;
-	/* text-decoration: underline; */
+	text-decoration: none !important;
 }
 
 @media all and (min-width: 991px){
@@ -35,20 +35,7 @@ a:link {
   text-decoration: none !important;
 }
 
-/* visited link */
-a:visited {
-  color: black;
-}
 
-/* mouse over link */
-a:hover {
-  color: black;
-}
-
-/* selected link */
-a:active {
-  color: black;
-}
 
 @-webkit-keyframes Gradient {
 	0% {
@@ -86,7 +73,7 @@ a:active {
 	}
 }
 
-h1,
+/* h1, */
 h6 {
 	font-family: 'Open Sans';
 	font-weight: 300;
